@@ -32,7 +32,7 @@ class Play extends Phaser.Scene {
         this.ship01 = new Spaceship(this, game.config.width + borderUISize*6, borderUISize*4, 'spaceship', 0, 30).setOrigin(0, 0);
         this.ship02 = new Spaceship(this, game.config.width + borderUISize*3, borderUISize*5 + borderPadding*2, 'spaceship', 0, 20).setOrigin(0,0);
         this.ship03 = new Spaceship(this, game.config.width, borderUISize*6 + borderPadding*4, 'spaceship', 0, 10).setOrigin(0,0);
-        this.shipSmall = new SmallSpaceship(this, game.config.width, borderUISize*6 + borderPadding*4, 'small_spaceship', 0, 0).setOrigin(0,0);
+        this.shipSmall = new SmallSpaceship(this, game.config.width, borderUISize*6 + borderPadding*4, 'small_spaceship', 0, 0).setOrigin(0, -10);
 
         // define keys
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
@@ -79,6 +79,8 @@ class Play extends Phaser.Scene {
             this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or ← to Menu', scoreConfig).setOrigin(0.5);
             this.gameOver = true;
         }, null, this);
+
+        this.timeLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*8, this.gameTimer, scoreConfig);
     }
 
     update() {
